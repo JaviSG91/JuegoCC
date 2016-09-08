@@ -33,7 +33,7 @@ var user1 = new user({ username: 'Javisg', jugada: {
   }
 });
 
-vision.use(express.static(__dirname + '/../public'));
+vision.use(express.static(__dirname + '/public'));
 vision.use(bodyParser.urlencoded({ extended: false }));
 vision.set('ip', process.env.IP|| '0.0.0.0');
 vision.set('port', (process.env.PORT || 5000));
