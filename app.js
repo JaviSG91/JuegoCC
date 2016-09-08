@@ -52,7 +52,7 @@ vision.get('/index',function(req,res){
 	vision.use(express.static(__dirname + '/public'));
 	var pagina='<!doctype html><html><head></head><body>';   
     pagina+= '<form action=\"Resend\" method=\"post\">';
-    pagina += '<br><a href="/index">Link</a></br>';  
+    pagina += '<br><a href="/">Link</a></br>';  
     pagina += '</form>';
     pagina += '</body></html>';
 	res.send(pagina);
