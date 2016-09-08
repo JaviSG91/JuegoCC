@@ -33,7 +33,7 @@ var user1 = new user({ username: 'Javisg', jugada: {
   }
 });
 
-vision.use(express.static(__dirname + '/../public'));
+vision.use(express.static(__dirname + '/public'));
 vision.use(bodyParser.urlencoded({ extended: false }));
 vision.set('ip', process.env.IP|| '0.0.0.0');
 vision.set('port', (process.env.PORT || 5000));
@@ -42,7 +42,7 @@ console.log("Server iniciado");
 vision.get('/',function(req,res){
 var pagina='<!doctype html><html><head></head><body>';   
     pagina+= '<form action=\"Registro\" method=\"post\">';
-    pagina += '<br><a href="public/index.html">Link</a></br>';
+    pagina += '<br><a href="index.html">Link</a></br>';
     //pagina += '<br><input type=\"submit\" value=\"Registrar\"></br>';
     
     pagina += '</form>';
