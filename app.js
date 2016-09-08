@@ -41,10 +41,8 @@ console.log("Server iniciado");
 
 vision.get('/',function(req,res){
 var pagina='<!doctype html><html><head></head><body>';   
-    pagina+= '<form action=\"Registro\" method=\"post\">';
-    pagina += '<br><a href="index.html">Link</a></br>';
-    //pagina += '<br><input type=\"submit\" value=\"Registrar\"></br>';
-    
+    pagina+= '<form action=\"Resend\" method=\"post\">';
+    pagina += '<br><a href="/public/index.html">Link</a></br>';  
     pagina += '</form>';
     pagina += '</body></html>';
 	res.send(pagina);
