@@ -12,7 +12,7 @@
   "name": "JJuegoCC",
   "version": "0.0.0",
   "description": "Juego para CC",
-  "main": "index.html",
+  "main": "index.js",
   "dependencies": {
     "grunt": "~1.0.1",
     "mongoose": "~4.6.0"
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JaviSG91/JuegoCC.git"
+    "url": "https://github.com/JaviSG91/JJuegoCC.git"
   },
   "keywords": [
     "juego",
@@ -31,6 +31,6 @@
   "author": "JaviSG91",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/JaviSG91/JuegoCC/issues"
+    "url": "https://github.com/JaviSG91/JJuegoCC/issues"
   }
 }
