@@ -40,7 +40,12 @@ vision.set('port', (process.env.PORT || 5000));
 console.log("Server iniciado");
 
 vision.get('/',function(req,res){
-
+var pagina='<!doctype html><html><head></head><body>';   
+    pagina+= '<form action=\"Resend\" method=\"post\">';
+    pagina += '<br><a href="/index">Link</a></br>';  
+    pagina += '</form>';
+    pagina += '</body></html>';
+	res.send(pagina);
 });
 
 vision.get('/index',function(req,res){
