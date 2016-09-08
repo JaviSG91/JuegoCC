@@ -49,8 +49,8 @@ var pagina='<!doctype html><html><head></head><body>';
 });
 
 vision.get('/index',function(req,res){
-
-	res.render('/public/index.html');
+	vision.use(express.static(__dirname + '/public'));
+	res.render('index.html');
 });
 
 vision.listen(vision.get('port'), function() {
