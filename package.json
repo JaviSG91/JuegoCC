@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "node lib/mensajeria.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
