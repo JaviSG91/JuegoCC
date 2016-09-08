@@ -1,0 +1,79 @@
+<html>
+<head>
+  <title>Matching Game</title>
+  <style>
+    img{position:absolute;}
+    div{position:absolute;
+       width:500px;
+       height:500px}
+    #rightSide { left: 500px;
+               border-left: 1px solid black }
+  </style>
+  <script>
+    numberOfFaces=5;
+    round=1;
+
+    function createImage(){
+      newItem = document.createElement("img");
+      var x= Math.floor(Math.random()*400);
+      var y= Math.floor(Math.random()*400);
+
+      //console.log(x);
+
+
+      newItem.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+      //newItem.setAttribute("top",x);
+      newItem.style.top=x;
+      newItem.style.left=y;
+      return newItem;
+    }
+
+    function generateFaces(){
+      theLeftSide = document.getElementById("leftSide");
+      theBody = document.getElementById("body");
+      theBody.onclick = function gameOver() {
+        alert("Game Over in round "+round+".Congrats!");
+        theBody.onclick = null;
+        theLeftSide.lastChild.onclick = null;
+
+
+
+      };
+
+
+      var theRightSide =
+          document.getElementById("rightSide");
+
+      for(var i=0;i<numberOfFaces;i++)
+        theLeftSide.appendChild(createImage());
+
+      theLeftSide.lastChild.onclick=  function nextLevel(event){
+          round++;
+          event.stopPropagation();
+          numberOfFaces += 5;
+          while(theLeftSide.firstChild)
+            theLeftSide.removeChild(theLeftSide.firstChild);
+          while(theRightSide.firstChild)
+              theRightSide.removeChild(theRightSide.firstChild);
+          generateFaces();
+        };
+      console.log(numberOfFaces);
+
+      var leftSideImages = theLeftSide.cloneNode(true);
+      leftSideImages.removeChild(leftSideImages.lastChild);
+
+      theRightSide.appendChild(leftSideImages);
+
+
+    }
+
+
+  </script>
+</head>
+<body id="body" onLoad="generateFaces()">
+  <h1>Matching Game</h1>
+  <p>Click on the extra smiling face on the left.</p>
+  <div id="leftSide"></div>
+  <div id="rightSide"></div>
+</body>
+</html>
