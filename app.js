@@ -49,12 +49,8 @@ var pagina='<!doctype html><html><head></head><body>';
 });
 
 vision.get('/index',function(req,res){
-var pagina='<!doctype html><html><head></head><body>';   
-    pagina+= '<form action=\"Resend\" method=\"post\">';
-    pagina += '<br><a href="/public/index.html">Linkee</a></br>';  
-    pagina += '</form>';
-    pagina += '</body></html>';
-	res.send(pagina);
+
+	res.render('/public/index.html');
 });
 
 vision.listen(vision.get('port'), function() {
