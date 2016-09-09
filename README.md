@@ -1,5 +1,8 @@
 # JJuegoCC		 
 
+[![](https://travis-ci.org/JaviSG91/JuegoCC.svg?branch=master)](https://travis-ci.org/JaviSG91/JuegoCC)
+
+[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/apps/juego-cc)
 
 ## Instalación
 
@@ -143,33 +146,7 @@ it("Comprueba nombre", function(done) {
 
 ```
 
-- [x] Test de borrado.
-```
-   it("borrado BD", function(done) {
-    new user({ username: 'Javisg', jugada: {
-		    puntuacion: 10,
-		    dificultad: 2,
-		    fecha: "06/09/2016"
-         }
 
-	}).save(function(err, model){
-      if (err) return done(err);
- 
-      clearDB(function(err){
-        if (err) return done(err);
- 
-       User.find({}, function(err, docs){
-          if (err) return done(err);
- 
-          console.log(docs);
- 
-          docs.length.should.equal(0);
-          done();
-        });
-      });
-    });
-  });
-```
 ##Integración Continua:
 
 Para la integración continua me he decantado por [Travis-ci.org](https://travis-ci.org/JaviSG91/JuegoCC).
