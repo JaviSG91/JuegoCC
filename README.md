@@ -43,13 +43,10 @@ Las funcionalidades que se recogen son:
 
 
 ##Hito2	
-Se ha creado un archivo `Packaje.json` que lleva a cabo la automatización de la instalación. Unicamente necesitamos disponer de la ultima versión de npm y nvm para poder utilizar nodejs.
+A través de un archivo package.json configuraremos las dependecias que son necesarias para la instalacion y despliegue de nuestro proyecto. Unicamente necesitamos disponer de la ultima versión de npm para poder utilizar nodejs.
 
-Para su instalación recurrimos a [nvm](https://github.com/creationix/nvm) y [npm](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server).
-Comprobamos que estan actualizadas o de lo contrario llevamos a cabo el siguiente [proceso de actualización](http://www.dbigcloud.com/bigdata/88-como-actualizar-node-js-a-la-ultima-version-estable.html).
-Tras la obtención de ambas y comprobar que usamos la version de node desplegamos el archivo `Packaje.json`.
 
-El código del `packaje.json` es el siguiente:
+El código del `package.json` es el siguiente:
 
 ```
 {
@@ -98,7 +95,9 @@ Con esto npm se encargara de generar e instalar los módulos necesarios para el 
 
 
 
-###Test para comprobar carga de páginas:
+###Tests:
+
+Para los tests he hecho uso de mocha, algunos de los tests son:
 
 - [x] Test de página inicial.
 ```
@@ -123,7 +122,7 @@ node_js:
 
 ##Documentación:
 
-Para generar el contenido de la documentación hemos utilizado el generador Grunt-docco.
+Para generar el contenido de la documentación he usado grunt docco.
 
 Siguiendo los pasos descritos en el apartado correspondiente del [material del primer tema](http://jj.github.io/CC/documentos/temas/Desarrollo_basado_en_pruebas).
 
