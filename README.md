@@ -106,102 +106,25 @@ Se han creado varios tipos de test; entre ellos podemos dividirlos en dos catego
 
 - [x] Test de página inicial.
 ```
-      it("Página inicial", function(done) {
-		request(prueba_pagina)
-			.get("/")
-			.expect("Content-Type", /text\/html/)
-			.expect(200, done);
-	});
+   
 ```
 
-- [x] Test de página de registro.
-```
-      it("Página de registro", function(done){
-		request(prueba_pagina)
-			.post("/Registro")
-			.expect("Content-Type", /text\/html/)
-			.expect(200, done);
-	});
-```
-
-- [x] Test de mensaje de registro satisfactorio.
-```
-      it("Registrando user", function(done){
-		request(prueba_pagina)
-		.post("/registraUser")
-		.expect("Content-Type", /text\/html/)
-		.expect(200, done);
-	
-	});
-```
-- [x] Test de página de acción usuario (envio de mensaje).
-
-```
-      it("Accion user" ,function(done){
-		request(prueba_pagina)
-		.post("/unaAccion")
-		.expect("Content-Type", /text\/html/)
-		.expect(200, done);
-	});
-```
-
-###Test para comprobar funcionalidad:
-
-- [x] Test de comprobación de existencia prévia de usuario e inserción.
-```
-      it("Comprobacion previa de usuario", function(done){
-	prueba.insertarUsuario('usuarioxxx',12);
-	var nombre="usuarioxxx";
-	var decision;
-	
-	prueba.comprobacion("usuarioxxx",12,function(err,resultado){	
-			assert.equal(resultado,true,"incorrecto");
-		done();
-	});
-	
-	});
-```
-- [x] Test de comprobación de edad de usuario existente.
-```
-      it("Comprobacion de edad", function(done){
-	prueba.getDataUserAge("usuarioxxx",12,function(err,resultado){	
-			assert.equal(resultado,true);
-		done();
-	});
-	
-	});
-```
-- [x] Test de comprobación de borrado de usuario.
-
-```
-      it("Borrado", function(done){
-		prueba.borrado("usuarioxxx");
-	prueba.comprobacion("usuarioxxx",12,function(err,resultado){	
-			assert.equal(resultado,false,"incorrecto");
-		done();
-	});	
-	
-	});
-```
 ##Integración Continua:
 
-Se ha llevado a cabo el despliegue en la plataforma de integración continua [Travis-ci.org](https://travis-ci.org/lrdzero/CCProyect).
+Se ha llevado a cabo el despliegue en la plataforma de integración continua [Travis-ci.org](https://travis-ci.org/javisg91/JuegoCC).
 
-Utilizando el contenido del archivo integrado en nuestro repositorio [**.travis.yml**](https://github.com/lrdzero/CCProyect/blob/master/.travis.yml)
+Hay que crear un archivo .travis.yml en el repositorio
 
 Cuyo contenido es el siguiente:
 
 ```
-      language: node_js
+language: node_js
 node_js:
   - "4.1"
   - "4.0"
   - "0.12"
   - "0.10"
 
-before_install:
-   - npm install -g mocha
-- npm install -g sqlite3
 ```
 
 ##Documentación:
@@ -213,8 +136,6 @@ Siguiendo los pasos descritos en el apartado correspondiente del [material del p
 #Hito 3
 
 ##Despliegue de la aplicación en Heroku.
-
-Se ha llevado a cabo el despliegue de la aplicación mediante sincronización de la aplicación con la plataforma Heroku. Se puede acceder a la misma mediante esta [**enlace**](https://ccproyect-v-2.herokuapp.com/).
 
 Estos son los pasos a seguir para desplegar la aplicación en Heroku:
 
@@ -236,16 +157,72 @@ Estos son los pasos a seguir para desplegar la aplicación en Heroku:
 
 ![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/eje4.png)
 
+
+Se ha de crear un archivo Procfile para indicar a Heroku que ejecutar, contendrá la siguiente línea:
+web: node app.js
+
+Tras cualquier cambio usamos git push heroku master
+
+ [Esta es la aplicación](https://juego-cc.herokuapp.com/)
+
 ##Añadiendo despliegue automático:
 
-Dentro de la página de heroku, seleccionamos nuestra app y vamos a las opciones "Deploy".
-Allí podemos configurar nuestra aplicación de forma que se linkee con cualquier cambio llevado a cabo en nuestro github.
+1.En la página de heroku debemos encontrar el proyecto que hemos creado con heroku create, una vez reconocido nos vamos al apartado deploy y lo conectamos a nuestro repositorio en github. Además marcamos la opción "wait for ci to pass before deploy" y "enable automatic deploys" para automatizar el proceso.
 
-![](http://googledrive.com/host/0B6Q-phIC3pUpblVzUS1RbEZjb1E/finii.png)
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/deploy.png)
+
+
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/deploy2.png)
+
+
+2.Una vez hecho, comprobamos dentro de nuestro repositorio en GitHub la conexión con heroku dentro de Settings->Webhooks
+
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/deploy3.png)
+
+3.Nos damos de alta en Snap-CI y nos autenticamos con nuestro GitHub, y seleccionamos un repositorio para las pruebas.
+
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/snapci.png)
+
+4.Finalmente comprobamos que las pruebas pasan correctamente.
+
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/snapci2.png)
 
 ##Hito 4
 
 
-.
 
-![](https://drive.google.com/open?id=0ByKPAGLB_FgcMHNQSW5CVHp3cXM)
+Primero debemos comprobar la versión de kernel si se va a instalar en Ubuntu, para que sea mayor de la 3.10 y comprobar también que se trata de la versión de 64 bits. Para ello usamos el comando uname -r:
+
+En mi caso se trata de la versión 3.19.0-25-generic, por lo que no habría problema.
+
+Seguidamente hay que añadir una gpg key con el comando:
+
+    sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+    
+
+Una vez hecho esto, nos vamos al archivo /etc/apt/sources.list.d/docker.list (en caso de que no exista lo creamos) y añadimos una entrada en función de la versión de Ubuntu que se tenga. En mi caso se trata de Ubuntu 14.04 y la entrada a añadir es:
+
+    deb https://apt.dockerproject.org/repo ubuntu-trusty main
+    
+Actualizamos el apt con:
+
+    apt-get update
+
+Purgamos el antiguo apt si existe:
+
+    apt-get purge lxc-docker
+    
+    
+Ya hemos completado la etapa de prerrequisitos, para instalarlo ahora debemos seguir los siguientes pasos:
+
+1. Actualizamos el apt con "sudo apt-get update"
+
+2. Instalamos docker con "sudo apt-get install docker-engine"
+
+3. Arrancamos el demonio con el comando "sudo service docker start"
+
+4. Finalmente probamos que funciona con "sudo docker run hello-world"
+
+Apareciendo el siguiente mensaje:
+
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/3-8-1.png)
