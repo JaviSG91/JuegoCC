@@ -107,7 +107,7 @@ Con esto npm se encargara de generar e instalar los módulos necesarios para el 
 
 ##Integración Continua:
 
-Para la integración continua me he decantado por [Travis-ci.org](https://travis-ci.org/javisg91/JuegoCC).
+Para la integración continua me he decantado por [Travis-ci.org](https://travis-ci.org/JaviSG91/JuegoCC).
 
 En primer lugar, hay que crear un archivo .travis.yml en el repositorio:
 
@@ -173,13 +173,6 @@ Tras cualquier cambio usamos git push heroku master
 
 ![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/deploy3.png)
 
-3.Nos damos de alta en Snap-CI y nos autenticamos con nuestro GitHub, y seleccionamos un repositorio para las pruebas.
-
-![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/snapci.png)
-
-4.Finalmente comprobamos que las pruebas pasan correctamente.
-
-![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/snapci2.png)
 
 ##Hito 4
 
