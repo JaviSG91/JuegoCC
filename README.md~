@@ -216,25 +216,61 @@ Siguiendo los pasos descritos en el apartado correspondiente del [material del p
 
 Se ha llevado a cabo el despliegue de la aplicación mediante sincronización de la aplicación con la plataforma Heroku. Se puede acceder a la misma mediante esta [**enlace**](https://ccproyect-v-2.herokuapp.com/).
 
-Estos son los pasos a seguir para desplegar la aplicación en Heroku:
+##Despliegue manual:
 
-1. Nos registramos dentro de la página de [Heroku](https://dashboard.heroku.com/)
-2. Instalamos las herramientas de Heroku con el comando
+Para llevar a cabo el despliegue de la aplicación he llevado a cabo los siguientes pasos:
 
-        wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh  
+- Creamos el archivo `Procfile` con el que indicamos el tipo de aplicación que vamos a desplegar y los comandos necesarios para lanzarla.
 
+El contenido del `Procfile` en nuestro caso debe ser el siguiente:
+```
+	web: node lib/mensajeria.js
+```
+- Posicionarme en mi repositorio local y obtener el toolbelt de heroku:
+```
+	wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+```
+- Logearme mediante comando del toolbet; Previamente ya disponia de una cuenta en heroku (SI no se dispone de cliente, este comando lo instala automáticamente).
 
-3. Usamos el comando heroku login para hacer login con el correo registrado y la correspondiente contraseña.
+```
+	heroku login
+```
+- Tras esto pasamos a la creación de la app, su linkeo con nuestro repositorio y su configuración para despliegue:
+```
+	heroku create ccproyect-v-2
+	...
+	
+	...
+	
+	heroku git:remote -a ccproyect-v-2
+	...
+	
+	...
+	heroku config:set DISABLE_COLLECTSTATIC=1
+	...
+	
+	...
+	
+```
 
-![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/heroku_login.png)
+- Finalmete asignamos los espacios de trabajo necesarios:
+```
+	heroku ps:scale web=1
+```
 
-4. Una vez hecho esto, pasamos a usar el comando heroku create para crear la aplicación en Heroku.
+- Ahora debemos hacer un push a nuestro repositorio mediante heroku:
 
-5. Para poner en marcha esta aplicación, se usar el comando git push heroku master y adicionalmente en el manual ofrecido por Heroku recomienda usar el comando heroku ps:scale web=1
+```
+	git add .
+	git commit -m "Añadido para despliegue heroku"
+	git push heroku master
+```
 
-6. Finalmente abrimos la página de nuestra aplicación con el comando heroku open
+- Con esto hecho lanzamos la aplicación:
 
-![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/eje4.png)
+```
+	heroku open
+```
 
 ##Añadiendo despliegue automático:
 

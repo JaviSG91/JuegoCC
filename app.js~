@@ -22,7 +22,7 @@ var express = require('express');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var info='';
-var vision=express();
+var express=express();
 
 
 var user = mongoose.model('Usuario', UserSchema);
@@ -33,13 +33,13 @@ var user1 = new user({ username: 'Javisg', jugada: {
   }
 });
 
-vision.use(express.static(__dirname + '/public'));
-vision.use(bodyParser.urlencoded({ extended: false }));
-vision.set('ip', process.env.IP|| '0.0.0.0');
-vision.set('port', (process.env.PORT || 5000));
+express.use(express.static(__dirname + '/public'));
+express.use(bodyParser.urlencoded({ extended: false }));
+express.set('ip', process.env.IP|| '0.0.0.0');
+express.set('port', (process.env.PORT || 5000));
 console.log("Server iniciado");
 
-vision.get('/',function(req,res){
+express.get('/',function(req,res){
 var pagina='<!doctype html><html><head></head><body>';   
     pagina+= '<form action=\"Resend\" method=\"post\">';
     pagina += '<br><a href="/index">Link</a></br>';  
@@ -48,12 +48,12 @@ var pagina='<!doctype html><html><head></head><body>';
 	res.send(pagina);
 });
 
-vision.get('/index',function(req,res){
+express.get('/index',function(req,res){
 
 });
 
-vision.listen(vision.get('port'), function() {
-  console.log('Node app is running on port', vision.get('port') + 'liste adress demand: '+vision.get('ip'));
+express.listen(express.get('port'), function() {
+  console.log('Node app is running on port', express.get('port') + 'liste adress demand: '+express.get('ip'));
 }); 
 
 user1.save(function (err, user1) {
