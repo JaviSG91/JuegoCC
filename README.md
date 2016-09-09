@@ -148,7 +148,7 @@ Estos son los pasos a seguir para desplegar la aplicación en Heroku:
 
 6. Finalmente abrimos la página de nuestra aplicación con el comando heroku open
 
-![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/eje4.png)
+![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/caras.png)
 
 
 Se ha de crear un archivo Procfile para indicar a Heroku que ejecutar, contendrá la siguiente línea:
@@ -241,3 +241,7 @@ CMD [ "npm", "start" ]
 
 Usamos el comando sudo docker pull con nuestro proyecto:
 ![](http://googledrive.com/host/0ByKPAGLB_FgcU1E3LVk2dWxsVzA/docker.png)
+
+Finalmente usamos sudo docker images y al obtener el id de la imagen en concreto usamos el comando docker run 'id'
+
+
