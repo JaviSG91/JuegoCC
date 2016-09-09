@@ -95,11 +95,7 @@ El código del `packaje.json` es el siguiente:
 
 Con esto npm se encargara de generar e instalar los módulos necesarios para el despliegue de la aplicación.
 
-##Test de la aplicación:
 
-Se han creado varios tipos de test; entre ellos podemos dividirlos en dos categorías:
-- Test para comprobar carga y funcionalidad de las diferentes páginas de la aplicación.
-- Test para comprobar funcionalidad básica en comunicación con BD.
 
 
 ###Test para comprobar carga de páginas:
@@ -111,11 +107,9 @@ Se han creado varios tipos de test; entre ellos podemos dividirlos en dos catego
 
 ##Integración Continua:
 
-Se ha llevado a cabo el despliegue en la plataforma de integración continua [Travis-ci.org](https://travis-ci.org/javisg91/JuegoCC).
+Para la integración continua me he decantado por [Travis-ci.org](https://travis-ci.org/javisg91/JuegoCC).
 
-Hay que crear un archivo .travis.yml en el repositorio
-
-Cuyo contenido es el siguiente:
+En primer lugar, hay que crear un archivo .travis.yml en el repositorio:
 
 ```
 language: node_js
