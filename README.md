@@ -97,13 +97,79 @@ Con esto npm se encargara de generar e instalar los módulos necesarios para el 
 
 ###Tests:
 
-Para los tests he hecho uso de mocha, algunos de los tests son:
+Para los tests he hecho uso de mocha (con la integración de mongoose y should), algunos de los tests son:
 
-- [x] Test de página inicial.
+
+- [x] Test de conexión.
 ```
-   
+  beforeEach(function(done) {
+    if (mongoose.connection.db) return done();
+ 
+    mongoose.connect(dbURI, done);
+  });
 ```
 
+- [x] Test de inserción en la BD.
+```
+   it("can be saved", function(done) {
+	
+	var user1 = new user({ username: 'Javisg', jugada: {
+		    puntuacion: 10,
+		    dificultad: 2,
+		    fecha: "06/09/2016"
+        }
+
+   	 });
+    user1.save(done);
+  });
+```
+- [x] Test de comprobación de nombre.
+```
+it("Comprueba nombre", function(done) {
+	   var user2 = new user({ username: 'Javisg', jugada: {
+		    puntuacion: 10,
+		    dificultad: 2,
+		    fecha: "06/09/2016"
+         }
+
+	});
+	user2.should.be.an.instanceOf(Object).and.have.property('username', 'Javisg');
+
+ 	done();
+	  
+ 
+	
+  });
+
+```
+
+- [x] Test de borrado.
+```
+   it("borrado BD", function(done) {
+    new user({ username: 'Javisg', jugada: {
+		    puntuacion: 10,
+		    dificultad: 2,
+		    fecha: "06/09/2016"
+         }
+
+	}).save(function(err, model){
+      if (err) return done(err);
+ 
+      clearDB(function(err){
+        if (err) return done(err);
+ 
+       User.find({}, function(err, docs){
+          if (err) return done(err);
+ 
+          console.log(docs);
+ 
+          docs.length.should.equal(0);
+          done();
+        });
+      });
+    });
+  });
+```
 ##Integración Continua:
 
 Para la integración continua me he decantado por [Travis-ci.org](https://travis-ci.org/JaviSG91/JuegoCC).
