@@ -113,10 +113,12 @@ En primer lugar, hay que crear un archivo .travis.yml en el repositorio:
 ```
 language: node_js
 node_js:
-  - "4.1"
-  - "4.0"
-  - "0.12"
-  - "0.10"
+  - "6"
+  - "6.1"
+  - "5.11"
+  - "iojs"
+services:
+  - mongodb
 
 ```
 
